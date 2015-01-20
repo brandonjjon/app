@@ -26,7 +26,7 @@ In app/Config/bootstrap.php you will find the following block of code, which all
    Configure::write('Coderity', array(
       'routes' => array(
                   'autoRouting' => true,
-                  'autoRoutingIgnoreRoutes' => 'add|view|display|delete|admin|users|leads|blog|domains'
+                  'autoRoutingIgnoreRoutes' => 'add|view|display|delete|admin|users|leads|blog'
                ),
       'blocks' => true,
       'articles' => true,
