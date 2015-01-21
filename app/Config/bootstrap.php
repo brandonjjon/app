@@ -122,6 +122,6 @@ Configure::write('Coderity', array(
       'articles' => true,
       'leads' => true,
       'redirects' => true,
-      'additionalAdminMenu' => array('Images' => array('url' => array('controller' => 'images', 'action' => 'index'), 'icon' => 'fa-file-image-o')),
+      'additionalAdminMenu' => array(),
       'checkInstall' => true
    ));
