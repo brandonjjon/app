@@ -113,6 +113,11 @@ CakeLog::config('error', array(
 	'file' => 'error',
 ));
 
+/*
+ * For more information on how these settings work, please visit:
+ * http://www.coderity.com/docs
+ */
+
 Configure::write('Coderity', array(
       'routes' => array(
                   'autoRouting' => true,
