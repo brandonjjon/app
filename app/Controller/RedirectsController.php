@@ -1,11 +1,11 @@
 <?php
-App::uses('CoderityAppController', 'Coderity.Controller');
+App::uses('AppController', 'Controller');
 /**
  * Redirects Controller
  *
  * @property Redirects $Redirects
  */
-class RedirectsController extends CoderityAppController {
+class RedirectsController extends AppController {
 
 	public function admin_index($search = null) {
 		$conditions = array();
