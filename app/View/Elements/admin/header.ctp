@@ -13,7 +13,7 @@
 					 'plugins/metisMenu/metisMenu.min',
 					 'sb-admin-2',
 					 'coderity',
-					 '/font-awesome-4.1.0/css/font-awesome.min');
+					 '/font-awesome-4.3.0/css/font-awesome.min');
 
 		echo $this->Html->css($css);
 
