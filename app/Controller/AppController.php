@@ -10,8 +10,8 @@ class AppController extends Controller {
 	public $components = array('Cookie', 'RequestHandler', 'Session', 'Paginator',
 								'Auth' => array(
 									'authorize'     => array('Controller'),
-									'loginRedirect' => array('controller' => 'users', 'action' =>'home', 'admin' => true),
-									'loginAction'   => array('controller' => 'users', 'action' =>'login', 'admin' => true),
+									'loginRedirect' => array('plugin' => false, 'controller' => 'users', 'action' =>'home', 'admin' => true),
+									'loginAction'   => array('plugin' => false, 'controller' => 'users', 'action' =>'login', 'admin' => true),
 									'authenticate' => array('Form' => array('passwordHasher' => 'Blowfish'))
 								));
 
