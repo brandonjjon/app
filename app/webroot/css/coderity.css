@@ -65,3 +65,7 @@ form .error-message {
 	padding-top: 10px;
 	text-align: center;
 }
+
+.alert {
+    margin-top: 15px;
+}
