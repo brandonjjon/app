@@ -15,6 +15,8 @@ class AppController extends Controller {
 									'authenticate' => array('Form' => array('passwordHasher' => 'Blowfish'))
 								));
 
+	public $helpers = array('MenuBuilder');
+
 	public function beforeFilter() {
 		$this->checkInstall();
 

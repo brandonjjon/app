@@ -3,13 +3,13 @@ App::uses('Helper', 'View');
 class CkHelper extends Helper {
     public $helpers = array('Html', 'Form');
 
-	/**
-	* This function inserts CK Editor for a form input
-	*
-	* @param string $input The name of the field, can be field_name or Model.field_name
-	* @param array $options Options include $options['label'] for a custom label - this can be expanded on if required
-	*/
-    function input($input, $options = array()) {
+/**
+* This function inserts CK Editor for a form input
+*
+* @param string $input The name of the field, can be field_name or Model.field_name
+* @param array $options Options include $options['label'] for a custom label - this can be expanded on if required
+*/
+    public function input($input, $options = array()) {
         echo $this->Html->script('//cdn.ckeditor.com/4.4.5.1/standard/ckeditor.js');
 
         $input = explode('.', $input);
