@@ -74,7 +74,7 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version());
 			</div>
 		</div>
 		<?php
-			$analytics = $this->requestAction(array('controller' => 'settings', 'action' => 'get', 'google_analytics'));
+			$analytics = $this->requestAction(array('plugin' => false, 'controller' => 'settings', 'action' => 'get', 'google_analytics'));
 			if ($analytics) {
 				echo $analytics;
 			}
