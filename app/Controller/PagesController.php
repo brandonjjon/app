@@ -98,7 +98,7 @@ class PagesController extends AppController {
 			$this->Page->create();
 			if ($this->Page->save($this->request->data)) {
 				$this->Session->setFlash(__('The page has been added successfully.'));
-				$this->redirect(array('action'=>'index'));
+				$this->redirect(array('action'=>'index', $this->request->data['Page']['parent_id']));
 			} else {
 				$this->Session->setFlash(__('There was a problem adding the page, please review the errors below and try again.'), 'error');
 			}
@@ -128,7 +128,7 @@ class PagesController extends AppController {
 			} else {
 				$this->Session->setFlash(__('There was a problem saving the page, please review the errors below and try again.'), 'error');
 			}
-			$this->redirect(array('action'=>'index'));
+			$this->redirect(array('action'=>'index', $this->request->data['Page']['parent_id']));
 		} else {
 			$this->request->data = $page;
 

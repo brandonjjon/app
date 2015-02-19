@@ -22,13 +22,13 @@ class AppController extends Controller {
 
 		// Change the layout to admin if the prefix is admin
 		if (!empty($this->params['prefix']) && $this->params['prefix'] == 'admin') {
-			if (Configure::read('Config.adminTheme')) {
-				$this->theme = Configure::read('Config.adminTheme');
+			if (Configure::read('Coderity.adminTheme')) {
+				$this->theme = Configure::read('Coderity.adminTheme');
 			}
 
 			$this->layout = 'admin';
-		} elseif (Configure::read('Config.theme')) { // lets see if we are using a theme
-			$this->theme = Configure::read('Config.theme');
+		} elseif (Configure::read('Coderity.theme')) { // lets see if we are using a theme
+			$this->theme = Configure::read('Coderity.theme');
 		}
 	}
 
