@@ -89,8 +89,8 @@ CREATE TABLE IF NOT EXISTS `pages` (
 -- Dumping data for table `pages`
 --
 
-INSERT INTO `pages` (`id`, `parent_id`, `lft`, `rght`, `name`, `sub_title`, `meta_title`, `meta_description`, `meta_keywords`, `content`, `slug`, `route`, `view`, `class`, `top_show`, `top_order`, `bottom_show`, `bottom_order`, `element`, `created`, `modified`) VALUES
-(1, NULL, NULL, NULL, 'Home', NULL, '', '', '', '<p>Coming Soon</p>', 'home', '/', '', '', 0, NULL, 0, NULL, 0, NULL, NULL);
+INSERT INTO `pages` (`id`, `parent_id`, `lft`, `rght`, `name`, `sub_title`, `meta_title`, `meta_description`, `meta_keywords`, `content`, `slug`, `route`, `post_route`, `view`, `class`, `top_show`, `top_order`, `bottom_show`, `bottom_order`, `new_window`, `element`, `created`, `modified`) VALUES
+(1, NULL, 1, 2, 'Home', NULL, 'Home', '', '', '<p>Coming Soon</p>\r\n', 'home', '/', '', '', '', 1, 0, 0, NULL, 0, 0, NULL, NULL);
 
 -- --------------------------------------------------------
 
