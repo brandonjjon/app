@@ -57,44 +57,6 @@ CREATE TABLE IF NOT EXISTS `leads` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `pages`
---
-
-CREATE TABLE IF NOT EXISTS `pages` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `parent_id` int(11) DEFAULT NULL,
-  `lft` int(11) DEFAULT NULL,
-  `rght` int(11) DEFAULT NULL,
-  `name` varchar(255) NOT NULL,
-  `sub_title` varchar(255) DEFAULT NULL,
-  `meta_title` varchar(255) NOT NULL,
-  `meta_description` text NOT NULL,
-  `meta_keywords` text NOT NULL,
-  `content` text NOT NULL,
-  `slug` varchar(255) NOT NULL,
-  `route` varchar(255) NOT NULL,
-  `view` varchar(255) NOT NULL,
-  `class` varchar(255) NOT NULL,
-  `top_show` tinyint(1) NOT NULL,
-  `top_order` int(11) DEFAULT NULL,
-  `bottom_show` tinyint(1) NOT NULL,
-  `bottom_order` int(11) DEFAULT NULL,
-  `element` tinyint(1) NOT NULL,
-  `created` datetime DEFAULT NULL,
-  `modified` datetime DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
-
---
--- Dumping data for table `pages`
---
-
-INSERT INTO `pages` (`id`, `parent_id`, `lft`, `rght`, `name`, `sub_title`, `meta_title`, `meta_description`, `meta_keywords`, `content`, `slug`, `route`, `post_route`, `view`, `class`, `top_show`, `top_order`, `bottom_show`, `bottom_order`, `new_window`, `element`, `created`, `modified`) VALUES
-(1, NULL, 1, 2, 'Home', NULL, 'Home', '', '', '<p>Coming Soon</p>\r\n', 'home', '/', '', '', '', 1, 0, 0, NULL, 0, 0, NULL, NULL);
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `settings`
 --
 
@@ -140,8 +102,6 @@ CREATE TABLE IF NOT EXISTS `users` (
 --
 -- Dumping data for table `users`
 --
-
-ALTER TABLE `pages` CHANGE `route` `route` VARCHAR( 255 ) CHARACTER SET utf8 COLLATE utf8_general_ci NULL ;
 
 
 --
@@ -207,13 +167,6 @@ CREATE TABLE IF NOT EXISTS `revisions` (
   KEY `user_id` (`user_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
--- Added 1st Jan 2015
-
-ALTER TABLE `pages` ADD `new_window` TINYINT( 1 ) NOT NULL AFTER `bottom_order` ;
-ALTER TABLE `pages` ADD `post_route` VARCHAR( 255 ) NOT NULL AFTER `route` ;
-
-ALTER TABLE `pages` CHANGE `post_route` `post_route` VARCHAR( 255 ) CHARACTER SET utf8 COLLATE utf8_general_ci NULL ;
-
 -- Added 9th Jan 2015
 
 ALTER TABLE `articles` ADD `route` VARCHAR( 255 ) NULL AFTER `image` ,
@@ -222,3 +175,46 @@ ADD `new_window` TINYINT( 1 ) NOT NULL AFTER `route` ;
 -- Added 16th Jan 2015
 
 INSERT INTO `settings` (`id`, `name`, `value`, `modified`) VALUES (NULL, 'site_emails_cc', '', NULL);
+
+-- Added 23rd Feb 2015
+
+
+--
+-- Table structure for table `pages`
+--
+
+CREATE TABLE IF NOT EXISTS `pages` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `parent_id` int(11) DEFAULT NULL,
+  `lft` int(11) DEFAULT NULL,
+  `rght` int(11) DEFAULT NULL,
+  `name` varchar(255) NOT NULL,
+  `sub_title` varchar(255) DEFAULT NULL,
+  `meta_title` varchar(255) NOT NULL,
+  `meta_description` text NOT NULL,
+  `meta_keywords` text NOT NULL,
+  `content` text NOT NULL,
+  `slug` varchar(255) NOT NULL,
+  `route` varchar(255) DEFAULT NULL,
+  `post_route` varchar(255) DEFAULT NULL,
+  `view` varchar(255) NOT NULL,
+  `class` varchar(255) NOT NULL,
+  `top_show` tinyint(1) NOT NULL,
+  `top_order` int(11) DEFAULT NULL,
+  `bottom_show` tinyint(1) NOT NULL,
+  `bottom_order` int(11) DEFAULT NULL,
+  `new_window` tinyint(1) NOT NULL,
+  `element` tinyint(1) NOT NULL,
+  `created` datetime DEFAULT NULL,
+  `modified` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
+
+--
+-- Dumping data for table `pages`
+--
+
+INSERT INTO `pages` (`id`, `parent_id`, `lft`, `rght`, `name`, `sub_title`, `meta_title`, `meta_description`, `meta_keywords`, `content`, `slug`, `route`, `post_route`, `view`, `class`, `top_show`, `top_order`, `bottom_show`, `bottom_order`, `new_window`, `element`, `created`, `modified`) VALUES
+(1, NULL, 1, 2, 'Home', NULL, 'Welcome to Coderity', '', '', '<div class="row">\r\n<div class="col-lg-12 text-center">\r\n<h1>Welcome to Coderity</h1>\r\n\r\n<p class="lead">Welcome to Coderity (pronouced Co-der-ity).&nbsp; Coderity is an &quot;out of the box&quot; CMS&nbsp;for the <a href="http://www.cakephp.org" target="_blank">CakePHP framework</a>, available on GitHub under the MIT license.</p>\r\n\r\n<p>Elegant, simple to use and install, Coderity provides a easy to use, straight forward Content Management System for CakePHP 2.</p>\r\n\r\n<p>Coderity is built on top of CakePHP. &nbsp;It is useful if you are looking for an out of the box, simple to use CakePHP CMS, which can be expanded and made your own!</p>\r\n\r\n<p class="lead">Features include:</p>\r\n\r\n<ul class="list-unstyled">\r\n <li>Pages management - add, edit and delete pages.</li>\r\n <li>Drag and drop ordering of the navigation menu, with the option to select which pages show in the top and bottom menu.</li>\r\n  <li>Site Blocks - Set general content global area&#39;s - such as header and footer sections, which can be edited and updated site wide.</li>\r\n <li>Blog - add, edit and delete blog articles. &nbsp;Have the ability to turn off the blog section if it isn&#39;t needed.</li>\r\n <li>Contact Form and Leads Management. &nbsp;A simple contact form is included by default, which emails the website administrator and stores the details in the Leads area.</li>\r\n  <li>Manage Admin Users - add, edit and delete the users of the CMS.</li>\r\n  <li>Redirects - add, edit and delete 301 redirects.</li>\r\n  <li>General Settings - control the overall settings such as the Site Name, Site Email Address and Google Analytics script.</li>\r\n <li>Easy installer. &nbsp;On initial set up, the website has a simple installer for setting the site details and creating the first admin user.</li>\r\n</ul>\r\n</div>\r\n</div>\r\n<!-- /.row -->', 'home', '/', '', '', '', 1, 0, 1, NULL, 0, 0, NULL, '2015-02-23 22:43:31'),
+(2, NULL, 3, 4, 'Docs', NULL, 'Docs', '', '', '<div class="row">\r\n<div class="col-lg-12 text-center">\r\n<h1>Coderity Docs</h1>\r\n\r\n<p class="lead">Need Help with Coderity</p>\r\n\r\n<p>Check out the <a href="http://www.coderity.com/docs" target="_blank">Coderity Docs</a> for help using Coderity!</p>\r\n</div>\r\n</div>\r\n', 'docs', '', '', '', '', 1, 1, 1, 1, 0, 0, '2015-02-23 22:46:06', '2015-02-23 22:46:06'),
+(3, NULL, 5, 6, 'Contact Form', NULL, 'Contact Form', '', '', '<div class="row">\r\n<div class="col-lg-12 text-center">\r\n<h1>Example Contact Form</h1>\r\n\r\n<p class="lead">The following is an example of a Contact Form from Coderity.&nbsp; This is set by setting the &quot;Page View&quot; to &quot;contact&quot; in the Pages CMS.&nbsp; You can create your own custom view files in app/View/Pages and link them to the CMS by changing the &quot;Page View&quot; value!</p>\r\n\r\n<p>For more information on this, check out the <a href="http://www.coderity.com/docs" target="_blank">Coderity Docs</a>!</p>\r\n</div>\r\n</div>\r\n', 'contact', '', '', 'contact', '', 1, 2, 1, 2, 0, 0, '2015-02-23 22:48:52', '2015-02-23 22:48:52');

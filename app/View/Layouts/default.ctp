@@ -14,19 +14,22 @@
  * @license       http://www.opensource.org/licenses/mit-license.php MIT License
  */
 
-$cakeDescription = __d('cake_dev', 'CakePHP: the rapid development php framework');
 $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version());
 ?>
+
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
-	<?php echo $this->Html->charset(); ?>
-	<title>
-		<?php echo $cakeDescription ?>:
-		<?php echo $this->fetch('title'); ?>
-	</title>
-	<?php
-		if (!empty($metaDescription)) {
+    <?php echo $this->Html->charset(); ?>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="Coderity">
+
+    <?php
+    	echo $this->Html->tag('title', $this->fetch('title'));
+
+    	if (!empty($metaDescription)) {
 			echo $this->Html->meta('description', $metaDescription);
 		}
 		if (!empty($metaKeywords)) {
@@ -35,52 +38,70 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version());
 
 		echo $this->Html->meta('icon');
 
-		echo $this->Html->css('cake.generic');
+		echo $this->Html->css('bootstrap.min');
 
-		echo $this->fetch('meta');
-		echo $this->fetch('css');
-		echo $this->fetch('script');
+		echo $this->Html->css('demo');
+
+		$js = array('jquery',
+					'jquery-ui');
+
+		echo $this->Html->script($js);
 	?>
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
 </head>
+
 <body>
-	<div id="container">
-		<div id="header">
-			<h1><?php echo $this->Html->link($cakeDescription, 'http://cakephp.org'); ?></h1>
-		</div>
+    <!-- Navigation -->
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only"><?php echo __('Toggle navigation'); ?></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <?php echo $this->Html->link(__('Coderity'), '/', array('class' => 'navbar-brand')); ?>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <?php echo $this->element('menu', array('ul' => array('class' => 'nav navbar-nav'))); ?>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+    </nav>
 
-		<div class="menu-head" id="menu">
-			<?php echo $this->element('menu'); ?>
-		</div>
+    <!-- Page Content -->
+	<div class="container">
+	    <?php
+	    	echo $this->Session->flash();
 
-		<div id="content">
-			<?php echo $this->Session->flash(); ?>
-
-			<?php echo $this->fetch('content'); ?>
-		</div>
-		<div id="footer">
-			<?php echo $this->element('menu', array('type' => 'bottom')); ?>
-			<div class="menu-bottom">
-					<?php echo $this->Html->link($this->Html->image('cake.power.gif', array('alt' => $cakeDescription, 'border' => '0')),
-					'http://www.cakephp.org/',
-					array('target' => '_blank', 'escape' => false, 'id' => 'cake-powered')
-						);
-					?>
-				<div class="left">
-				<?php echo $cakeVersion; ?>
-				</div>
-				<div class="center">
-				<?php echo $this->Html->link(__('Powered by Coderity'), 'http://www.coderity.com', array('target' => '_blank')); ?>
-				</div>
-			</div>
-		</div>
-		<?php
-			$analytics = $this->requestAction(array('plugin' => false, 'controller' => 'settings', 'action' => 'get', 'google_analytics'));
-			if ($analytics) {
-				echo $analytics;
-			}
+			echo $this->fetch('content');
 		?>
-
-		<?php echo $this->element('sql_dump'); ?>
 	</div>
+
+	<div class="container">
+        <?php echo $this->element('menu', array('type' => 'bottom', 'ul' => array('class' => 'nav navbar-nav'))); ?>
+    </div>
+	<?php
+
+		echo $this->Html->script('bootstrap.min');
+
+		$analytics = $this->requestAction(array('plugin' => false, 'controller' => 'settings', 'action' => 'get', 'google_analytics'));
+		if ($analytics) {
+			echo $analytics;
+		}
+
+		echo $this->element('sql_dump');
+	?>
 </body>
+
 </html>

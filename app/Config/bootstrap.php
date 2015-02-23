@@ -128,5 +128,7 @@ Configure::write('Coderity', array(
       'leads' => true,
       'redirects' => true,
       'additionalAdminMenu' => array(),
-      'checkInstall' => true
+      'checkInstall' => true,
+      'theme' => '',
+      'adminTheme' => ''
    ));

@@ -37,14 +37,12 @@ class AppController extends Controller {
 	public function beforeRender() {
 		// a work around for flash messages
 		// success by default
-		if (!empty($this->params['prefix']) && $this->params['prefix'] == 'admin') {
-			if ($this->Session->check('Message.flash')) {
-				$flash = $this->Session->read('Message.flash');
+		if ($this->Session->check('Message.flash')) {
+			$flash = $this->Session->read('Message.flash');
 
-				if ($flash['element'] == 'default') {
-					$flash['element'] = 'success';
-					$this->Session->write('Message.flash', $flash);
-				}
+			if ($flash['element'] == 'default') {
+				$flash['element'] = 'success';
+				$this->Session->write('Message.flash', $flash);
 			}
 		}
 
