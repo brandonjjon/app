@@ -4,6 +4,10 @@ if (!empty($type) && $type == 'bottom') {
 	$loadMenu = $bottomMenu;
 }
 
+if (empty($ul['class'])) {
+	$ul['class'] = 'dropdown';
+}
+
 if ($loadMenu) : ?>
 	<ul<?php if (!empty($ul['class'])) : ?> class="<?php echo $ul['class']; ?>"<?php endif; ?>>
 		<?php

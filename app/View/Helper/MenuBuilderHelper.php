@@ -20,6 +20,10 @@ class MenuBuilderHelper extends Helper {
                 $ulOptions = $options['ul'];
             }
 
+            if (empty($ulOptions['class'])) {
+                $ulOptions['class'] = 'dropdown-menu';
+            }
+
             echo $this->Html->tag('ul', null, $ulOptions);
         }
 
@@ -27,12 +31,7 @@ class MenuBuilderHelper extends Helper {
             $options['active'] = 'active';
         }
 
-        foreach ($loadMenu as $menu) {
-            $linkOptions = array();
-            if (!empty($menu['new_window'])) {
-                $linkOptions['target'] = '_blank';
-            }
-
+        foreach ($loadMenu as $key => $menu) {
             $liOptions = array();
 
             // lets build the li class
@@ -51,6 +50,17 @@ class MenuBuilderHelper extends Helper {
 
             echo $this->Html->tag('li', null, $liOptions);
 
+            $linkOptions = array();
+            if (!empty($menu['new_window'])) {
+                $linkOptions['target'] = '_blank';
+            }
+
+            if (!empty($menu['children'])) {
+                $linkOptions['data-target'] = '#';
+                $linkOptions['data-toggle'] = 'dropdown';
+                $linkOptions['class']       = 'dropdown-toggle';
+            }
+
             echo $this->Html->link($menu['title'], $menu['url'], $linkOptions);
 
             if (!empty($menu['children'])) {
@@ -58,7 +68,7 @@ class MenuBuilderHelper extends Helper {
                     $options['children'] = array();
                 }
 
-                $options['children']['dropdown'] = true;
+                $options['children']['dropdown']   = true;
                 $this->load($menu['children'], $options['children']);
             }
 
