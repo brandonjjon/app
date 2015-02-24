@@ -31,7 +31,7 @@ class MenuBuilderHelper extends Helper {
             $options['active'] = 'active';
         }
 
-        foreach ($loadMenu as $key => $menu) {
+        foreach ($loadMenu as $menu) {
             $liOptions = array();
 
             // lets build the li class
@@ -68,7 +68,7 @@ class MenuBuilderHelper extends Helper {
                     $options['children'] = array();
                 }
 
-                $options['children']['dropdown']   = true;
+                $options['children']['dropdown'] = true;
                 $this->load($menu['children'], $options['children']);
             }
 
