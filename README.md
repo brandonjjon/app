@@ -13,7 +13,9 @@
 1) Once the source is downloaded, ensure that the app/tmp (and subfolders) are writable.
 
 2) Create a new database and dump the following sql into the DB:
-   app/Config/Schema/coderity.sql
+```
+app/Config/Schema/coderity.sql
+```
 
 3) Copy the app/Config/database.php.default file to app/Config/database.php and set your database details.
 
@@ -23,17 +25,21 @@
 
 In app/Config/bootstrap.php you will find the following block of code, which allows you to turn on / off various features of Coderity.
 
-   Configure::write('Coderity', array(
-      'routes' => array(
-                  'autoRouting' => true,
-                  'autoRoutingIgnoreRoutes' => 'add|view|display|delete|admin|users|leads|blog'
-               ),
-      'blocks' => true,
-      'articles' => true,
-      'leads' => true,
-      'redirects' => true,
-      'additionalAdminMenu' => array()
-   ));
+```php
+Configure::write('Coderity', array(
+   'routes' => array(
+               'autoRouting' => true,
+               'autoRoutingIgnoreRoutes' => 'add|view|display|delete|admin|users|leads|blog'
+            ),
+   'blocks' => true,
+   'articles' => true,
+   'leads' => true,
+   'redirects' => true,
+   'additionalAdminMenu' => array(),
+   'theme' => '',
+   'adminTheme' => ''
+));
+```
 
 To view the full documentation, visit: http://www.coderity.com/docs
 
