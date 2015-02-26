@@ -19,6 +19,11 @@ class PagesController extends AppController {
 	public function display($slug = null) {
 		$page = $this->Page->get($slug);
 
+		// lets check for a 301 redirect
+		if (!empty($page['Page']['route']) && $page['Page']['route'] !== '/' . trim($this->params->url, '/')) {
+			return $this->redirect('/' . trim($page['Page']['route'], '/'), 301);
+		}
+
 		if (!empty($page['Page']['view']) && $this->request->is('post')) {
 			try {
 				$this->loadModel('Lead');
